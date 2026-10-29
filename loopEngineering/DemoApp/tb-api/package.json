@@ -1,0 +1,11 @@
+{
+  "name": "tb-api-tests",
+  "private": true,
+  "scripts": {
+    "test": "pwsh -NoProfile -File scripts/run-tests.ps1",
+    "test:junit": "bru run --env Cloud --reporter-json results/latest.json --reporter-junit results/latest.xml --reporter-html results/latest.html"
+  },
+  "devDependencies": {
+    "@usebruno/cli": "^2.9.0"
+  }
+}

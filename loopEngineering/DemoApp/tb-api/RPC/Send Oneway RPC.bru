@@ -1,0 +1,31 @@
+meta {
+  name: Send Oneway RPC
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/rpc/oneway/{{deviceId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}
+
+body:json {
+  {
+    "method": "setLed",
+    "params": true,
+    "timeout": 5000
+  }
+}
+
+tests {
+  test("accepted", function () {
+    expect(res.status).to.equal(200);
+  });
+}

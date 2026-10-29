@@ -1,0 +1,16 @@
+meta {
+  name: Get Device By Id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/device/{{deviceId}}
+  body: none
+  auth: none
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}

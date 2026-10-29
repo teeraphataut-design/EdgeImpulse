@@ -1,0 +1,17 @@
+- [/] Create common styles, responsive login page, and loading/error states.
+  - Verify: labels, keyboard navigation, empty-field validation, and layout at 320/768/1280px; CSS/source checks and human visual verification.
+  - Evidence: source/HTML checks passed; browser visual and interactive checks await human checkpoint. Not marked complete.
+- [ ] Implement authentication and protected dashboard entry shell.
+  - Verify: mock login → user → first device → credentials; reject malformed responses/non-customer/empty devices; handle 401/404/503, timeout, one shared refresh; no secrets in logs or persistent storage. Human confirms real account flow.
+  - Evidence: implemented; 11 mock checks pass in DemoApp/evidence/auth-tests.json; node --check passes on all three modules. Real login and dashboard redirect/logout checks await human checkpoint. Concurrent-refresh behavior and elapsed timeout remain untested.
+- [ ] Build dashboard widgets: 8-second canvas chart, numeric tiles, tilt gauge, and LED control.
+  - Human evidence (2026-10-19): changing MPU-6050 values in Wokwi updates the website. Detailed chart/tilt and viewport checks remain pending.
+  - Verify: chart handles 1–20Hz, range validation, tilt clamping, units and responsive layout at all breakpoints.
+  - Evidence: implemented; node syntax and executed model checks pass (including 161 points at the inclusive eight-second boundary at 20Hz). Visual/live verification pending human dashboard checkpoint.
+- [ ] Add WebSocket lifecycle and two-way LED RPC.
+  - Additional human evidence (2026-10-19): logout works; LED command after stopping Wokwi displays device-not-responding error. Switch rollback, reconnect timing and resource cleanup remain unverified independently.
+  - Human evidence (2026-10-19): user confirmed login and LED on/off response in Wokwi. Remaining lifecycle/rollback/logout checks still pending.
+  - Verify: backoff 1/2/4…30s, ten-second connection deadline, stale data handling, initial/streamed LED state, failed-command rollback, logout cleanup.
+  - Evidence: implemented and syntax checked; live WS/RPC, reconnection and logout checks await human feedback. Not marked complete.
+- [ ] Review, repair, and collect homework evidence.
+  - Verify: before/after login/dashboard screenshots, 401/404/503 and console checks, issues/fixes/prompts report; human confirms final review.

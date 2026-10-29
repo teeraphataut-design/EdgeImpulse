@@ -1,0 +1,16 @@
+meta {
+  name: Get Latest Timeseries
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/plugins/telemetry/DEVICE/{{deviceId}}/values/timeseries
+  body: none
+  auth: none
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}

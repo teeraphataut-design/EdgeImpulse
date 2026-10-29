@@ -1,0 +1,27 @@
+meta {
+  name: List Customer Devices
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/customer/{{customerId}}/devices?pageSize=50&page=0
+  body: none
+  auth: none
+}
+
+params:query {
+  pageSize: 50
+  page: 0
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}
+
+script:post-response {
+  if (res.body && res.body.data && res.body.data.length > 0) {
+    bru.setEnvVar("deviceId", res.body.data[0].id.id);
+  }
+}

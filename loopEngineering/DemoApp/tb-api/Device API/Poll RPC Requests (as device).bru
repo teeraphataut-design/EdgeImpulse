@@ -1,0 +1,21 @@
+meta {
+  name: Poll RPC Requests (as device)
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/v1/{{deviceAccessToken}}/rpc?timeout=20000
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+script:post-response {
+  if (res.body && res.body.id) {
+    bru.setEnvVar("rpcRequestId", res.body.id);
+  }
+}

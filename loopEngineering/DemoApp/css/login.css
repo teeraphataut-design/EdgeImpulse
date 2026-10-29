@@ -1,0 +1,21 @@
+@import url('./common.css');
+.site-header, .login-layout, .site-footer { width: min(var(--max), 100%); margin-inline: auto; padding: var(--s3); }
+.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2); }
+.brand { font-weight: 700; letter-spacing: var(--tight); } .brand span { color: var(--accent); }
+.lab-tag { border: var(--border) solid var(--line); border-radius: var(--pill); padding: var(--s1) var(--s2); }
+.login-layout { display: grid; gap: var(--s4); align-items: center; padding-block: var(--s4); }
+h1 { font-size: var(--title); line-height: 1.1; letter-spacing: var(--tight); margin: var(--s2) 0 var(--s3); }
+h1 span { color: var(--accent); } .intro p { max-width: var(--form); }
+.signal-art { width: 100%; max-width: var(--form); height: auto; margin-block: var(--s3); color: var(--accent); }
+.signal-grid { stroke: var(--line); stroke-width: 1; fill: none; } .signal-wave { stroke: currentColor; stroke-width: 2; fill: none; }
+.features { display: flex; flex-wrap: wrap; gap: var(--s2); color: var(--muted); font-size: var(--small); }
+.features span::before { content: '↗ '; color: var(--accent); }
+.login-card { width: 100%; max-width: var(--form); padding: var(--s3); justify-self: center; }
+h2 { font-size: var(--heading); letter-spacing: var(--tight); margin: var(--s1) 0; }
+form { display: grid; gap: var(--s2); margin-top: var(--s4); }
+label { font-weight: 500; } input { width: 100%; background: var(--bg); color: var(--text); padding: var(--s2); margin-top: var(--s1); }
+input::placeholder { color: var(--muted); } .primary { width: 100%; margin-top: var(--s1); }
+.connection { margin-top: var(--s3); border-top: var(--border) solid var(--line); padding-top: var(--s2); overflow-wrap: anywhere; }
+.site-footer { color: var(--muted); font-size: var(--small); }
+@media (min-width: 48rem) { .login-layout { padding-block: var(--s6); } .login-card { padding: var(--s4); } }
+@media (min-width: 80rem) { .login-layout { grid-template-columns: 1.15fr 1fr; gap: var(--s6); } }

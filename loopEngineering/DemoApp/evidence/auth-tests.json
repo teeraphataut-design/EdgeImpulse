@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-19",
+  "kind": "mock tests; no live credentials used",
+  "results": [
+    {
+      "name": "Complete customer login and session cleanup",
+      "result": "PASS"
+    },
+    {
+      "name": "Login 401: one attempt and cleared session",
+      "result": "PASS"
+    },
+    {
+      "name": "Login 404: one attempt and cleared session",
+      "result": "PASS"
+    },
+    {
+      "name": "Login 503: one attempt and cleared session",
+      "result": "PASS"
+    },
+    {
+      "name": "403 identifies operation: อ่านข้อมูลบัญชี",
+      "result": "PASS"
+    },
+    {
+      "name": "403 identifies operation: อ่านรายการอุปกรณ์",
+      "result": "PASS"
+    },
+    {
+      "name": "403 identifies operation: อ่าน Access Token",
+      "result": "PASS"
+    },
+    {
+      "name": "Malformed JSON handled",
+      "result": "PASS"
+    },
+    {
+      "name": "Tenant Admin rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "Empty device list rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "Protected 401 refreshes once and retries once",
+      "result": "PASS"
+    },
+    {
+      "name": "Failed refresh is not retried",
+      "result": "PASS"
+    },
+    {
+      "name": "Network failure handled without retry",
+      "result": "PASS"
+    },
+    {
+      "name": "Abort handled without retry",
+      "result": "PASS"
+    }
+  ]
+}

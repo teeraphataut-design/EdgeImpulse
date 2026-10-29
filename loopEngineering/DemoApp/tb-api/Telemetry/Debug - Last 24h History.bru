@@ -1,0 +1,38 @@
+meta {
+  name: Debug - Last 24h History
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/plugins/telemetry/DEVICE/{{deviceId}}/values/timeseries?keys={{telemetryKeys}}&startTs={{debugStartTs}}&endTs={{debugEndTs}}&interval=0&limit=1000&agg=NONE
+  body: none
+  auth: none
+}
+
+params:query {
+  keys: {{telemetryKeys}}
+  startTs: {{debugStartTs}}
+  endTs: {{debugEndTs}}
+  interval: 0
+  limit: 1000
+  agg: NONE
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}
+
+script:pre-request {
+  const now = Date.now();
+  bru.setVar("debugEndTs", now);
+  bru.setVar("debugStartTs", now - 24 * 60 * 60 * 1000);
+}
+
+docs {
+  Diagnostic request: queries the last 24 hours (computed at send time) for
+  {{telemetryKeys}} to confirm whether the device has sent any data at all
+  for these keys recently, independent of the startTs/endTs window used
+  in "Get Timeseries History".
+}

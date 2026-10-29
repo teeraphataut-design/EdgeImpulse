@@ -1,0 +1,33 @@
+meta {
+  name: Send Twoway RPC [OFF]
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/rpc/twoway/{{deviceId}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}
+
+body:json {
+  {
+    "method": "setLed",
+    "params": false,
+    "timeout": 5000
+  }
+}
+
+tests {
+  test("device replied", function () {
+    expect(res.status).to.equal(200);
+    expect(res.body.success).to.equal(true);
+    expect(res.body.led_state).to.equal(false);
+  });
+}

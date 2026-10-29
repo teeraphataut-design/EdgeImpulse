@@ -1,0 +1,16 @@
+meta {
+  name: Get Client Attributes
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/plugins/telemetry/DEVICE/{{deviceId}}/values/attributes/CLIENT_SCOPE
+  body: none
+  auth: none
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}

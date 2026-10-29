@@ -1,0 +1,16 @@
+meta {
+  name: Get All Attributes
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/plugins/telemetry/DEVICE/{{deviceId}}/values/attributes
+  body: none
+  auth: none
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}

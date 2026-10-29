@@ -1,0 +1,53 @@
+meta {
+  name: Get Timeseries History
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/plugins/telemetry/DEVICE/{{deviceId}}/values/timeseries?keys={{telemetryKeys}}&startTs={{startTs}}&endTs={{endTs}}&interval=0&limit=1000&agg=NONE
+  body: none
+  auth: none
+}
+
+params:query {
+  keys: {{telemetryKeys}}
+  startTs: {{startTs}}
+  endTs: {{endTs}}
+  interval: 0
+  limit: 1000
+  agg: NONE
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}
+
+script:pre-request {
+  // fall back to the last hour when startTs/endTs are not set in the environment
+  if (!bru.getEnvVar("startTs") || !bru.getEnvVar("endTs")) {
+    const now = Date.now();
+    bru.setVar("startTs", now - 60 * 60 * 1000);
+    bru.setVar("endTs", now);
+  }
+}
+
+docs {
+  Window: `startTs` / `endTs` from the environment. If either is empty
+  (the Cloud environment default), the last hour is queried instead.
+
+  Troubleshooting "200 OK but no data":
+  ThingsBoard's timeseries API returns 200 with an empty body ({} or empty
+  arrays per key) whenever it simply found nothing to return — it is not an
+  error response. Most common causes:
+  1. Key name mismatch: `telemetryKeys` must match the device's actual key
+     names exactly (case-sensitive). Run "Get Latest Timeseries" (no key
+     filter) to see the real key names/values currently stored for
+     {{deviceId}}, then fix `telemetryKeys` if they differ.
+  2. No telemetry was sent in this exact window: run
+     "Debug - Last 24h History" to check if ANY data exists recently for
+     these keys, then narrow down the real time range from there.
+  3. Wrong device: confirm {{deviceId}} is the sensor/gateway device you
+     expect, not another device assigned to the customer.
+}

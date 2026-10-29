@@ -1,0 +1,49 @@
+meta {
+  name: Subscribe Latest Telemetry
+  type: ws
+  seq: 1
+}
+
+ws {
+  url: {{wsBaseUrl}}/api/ws/plugins/telemetry?token={{accessToken}}
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {
+      "tsSubCmds": [
+        {
+          "entityType": "DEVICE",
+          "entityId": "{{deviceId}}",
+          "scope": "LATEST_TELEMETRY",
+          "cmdId": 1
+        }
+      ],
+      "historyCmds": [],
+      "attrSubCmds": []
+    }
+  '''
+}
+
+body:ws {
+  name: message 2
+  type: json
+  content: '''
+    {
+      "tsSubCmds": [
+        {
+          "entityType": "DEVICE",
+          "entityId": "{{deviceId}}",
+          "scope": "LATEST_TELEMETRY",
+          "cmdId": 1,
+          "unsubscribe": true
+        }
+      ],
+      "historyCmds": [],
+      "attrSubCmds": []
+    }
+  '''
+}
+

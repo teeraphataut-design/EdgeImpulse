@@ -1,0 +1,26 @@
+meta {
+  name: Get Current User
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/auth/user
+  body: none
+  auth: none
+}
+
+headers {
+  X-Authorization: Bearer {{accessToken}}
+  Accept: application/json
+}
+
+script:post-response {
+  if (res.status === 200 && res.body && res.body.id) {
+    bru.setEnvVar("userId", res.body.id.id);
+    // only present when logged in as a CUSTOMER_USER
+    if (res.body.customerId && res.body.customerId.id !== "13814000-1dd2-11b2-8080-808080808080") {
+      bru.setEnvVar("customerId", res.body.customerId.id);
+    }
+  }
+}

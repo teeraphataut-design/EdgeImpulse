@@ -1,0 +1,6 @@
+results/*
+!results/manual.json
+
+# Contain real tokens (user JWT / device access token) — keep local only
+results/cloud.json
+environments/Cloud.bru

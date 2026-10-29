@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Signal Lab · Login</title><link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <header class="site-header"><div class="brand"><span>◈</span> SIGNAL LAB</div><div class="lab-tag small">CPE 23367 · LAB 01</div></header>
+  <main class="login-layout">
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="eyebrow">Raw signal diagnostics</div>
+      <h1 id="intro-title">Every movement.<br><span>A signal to explore.</span></h1>
+      <p class="muted">สำรวจการเคลื่อนไหวจาก MPU-6050 ดูค่าจาก ESP32-S3 แบบเรียลไทม์ และควบคุมอุปกรณ์ผ่าน ThingsBoard</p>
+      <svg class="signal-art" viewBox="0 0 440 110" aria-hidden="true"><path class="signal-grid" d="M0 25H440M0 55H440M0 85H440M55 0V110M165 0V110M275 0V110M385 0V110"/><path class="signal-wave" d="M0 55L45 55L60 45L75 65L90 54L120 54L135 25L150 90L165 10L180 70L195 50L220 55L250 55L265 40L280 65L295 55L335 55L350 30L365 80L380 50L395 55H440"/></svg>
+      <div class="features"><span>Live telemetry</span><span>3-axis motion</span><span>LED control</span></div>
+    </section>
+    <section class="card login-card" aria-labelledby="login-title">
+      <div class="eyebrow">Connect your workspace</div><h2 id="login-title">เข้าสู่ระบบ</h2>
+      <p class="muted small">ใช้บัญชี Customer User ที่ผูกกับอุปกรณ์ของคุณ</p>
+      <form id="login-form" novalidate>
+        <label for="username">Username<input id="username" name="username" type="text" autocomplete="username" placeholder="อีเมลบัญชี ThingsBoard" required maxlength="254" autocapitalize="none" spellcheck="false"></label>
+        <label for="password">Password<input id="password" name="password" type="password" autocomplete="current-password" placeholder="รหัสผ่านของคุณ" required></label>
+        <p id="login-error" class="error small" role="alert" hidden></p>
+        <button class="primary" id="login-button" type="submit"><span id="login-spinner" class="spinner" hidden aria-hidden="true"></span><span id="login-label">Login to Dashboard</span></button>
+        <p id="login-status" class="muted small" role="status" aria-live="polite"></p>
+      </form>
+      <div class="connection small"><span class="muted">SERVER</span><br>thingsboard.cloud<br><span class="muted">เซสชันเก็บเฉพาะในแท็บนี้ ไม่บันทึกรหัสผ่าน</span></div>
+    </section>
+  </main>
+  <footer class="site-footer">ESP32-S3 / MPU-6050 · Student 68069710</footer>
+  <script type="module" src="js/login.js?v=20261019-2"></script>
+</body></html>

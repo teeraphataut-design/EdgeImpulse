@@ -1,0 +1,29 @@
+meta {
+  name: Subscribe Attributes
+  type: ws
+  seq: 2
+}
+
+ws {
+  url: {{wsBaseUrl}}/api/ws/plugins/telemetry?token={{accessToken}}
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {
+      "tsSubCmds": [],
+      "historyCmds": [],
+      "attrSubCmds": [
+        {
+          "entityType": "DEVICE",
+          "entityId": "{{deviceId}}",
+          "scope": "CLIENT_SCOPE",
+          "cmdId": 2
+        }
+      ]
+    }
+  '''
+}
+
